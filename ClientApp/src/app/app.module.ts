@@ -11,18 +11,12 @@ import * as fromRouter from '@ngrx/router-store';
 
 import { AppComponent } from './core/containers/app.component';
 import { HomeComponent } from './core/containers/home/home.component';
-import { HttpClient } from '@angular/common/http';
-import { LocationService } from './core/services/location.service';
-
-export function setupLocationService(http: HttpClient) {
-  return new LocationService(http);
-}
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    CoreModule.forRoot(),
+    CoreModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -39,11 +33,6 @@ export function setupLocationService(http: HttpClient) {
     })
   ],
   providers: [
-    {
-      provide: LocationService,
-      useFactory: setupLocationService,
-      deps: [HttpClient]
-    },
     {
       provide: fromRouter.RouterStateSerializer,
       useClass: fromRoot.CustomRouterSerializer

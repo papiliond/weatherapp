@@ -10,6 +10,10 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { LocationService } from './services/location.service';
 import { HttpClient } from '@angular/common/http';
 
+export function setupLocationService(http: HttpClient) {
+  return new LocationService(http);
+}
+
 @NgModule({
   imports: [SharedModule],
   declarations: [
@@ -17,13 +21,20 @@ import { HttpClient } from '@angular/common/http';
     HomeComponent,
     HomePageComponent,
     NavMenuComponent
+  ],
+  providers: [
+    {
+      provide: LocationService,
+      useFactory: setupLocationService,
+      deps: [HttpClient]
+    }
   ]
 })
 export class CoreModule {
-  static forRoot(params?: any): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders {
     return {
       ngModule: CoreModule,
-      providers: [HttpClient]
+      providers: [LocationService]
     };
   }
 }

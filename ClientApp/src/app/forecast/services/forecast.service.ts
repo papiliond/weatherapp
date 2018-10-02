@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { DailyForecast } from '../models/daily-forecast.model';
 
-const API_KEY = "478b9f1bffce06323340f52a193b9902";
+const API_KEY = "15646a06818f61f7b8d7823ca833e1ce";
 
 @Injectable()
 export class ForecastService {

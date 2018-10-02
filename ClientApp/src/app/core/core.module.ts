@@ -8,6 +8,7 @@ import { HomeComponent } from './containers/home/home.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 
 import { LocationService } from './services/location.service';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   imports: [SharedModule],
@@ -19,10 +20,10 @@ import { LocationService } from './services/location.service';
   ]
 })
 export class CoreModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(params?: any): ModuleWithProviders {
     return {
       ngModule: CoreModule,
-      providers: [LocationService]
+      providers: [HttpClient]
     };
   }
 }

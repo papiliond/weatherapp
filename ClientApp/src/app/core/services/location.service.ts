@@ -7,12 +7,11 @@ import { IpInfoModel } from '../models/location.model';
 
 @Injectable()
 export class LocationService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getLocation(): Observable<IpInfoModel> {
     const url = 'https://ipinfo.io/json';
 
-    return Observable.create();
-    // return this.http.get<IpInfoModel>(url);
+    return this.http.get<IpInfoModel>(url);
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   isExpanded = false;
+
+  @Input()
+  location = '';
+
+  @Output()
+  fetchLocation = new EventEmitter();
 
   collapse() {
     this.isExpanded = false;

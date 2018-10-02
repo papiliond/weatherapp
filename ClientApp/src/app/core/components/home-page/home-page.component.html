@@ -1,0 +1,14 @@
+<h1>Hello, guest!</h1>
+<p>Welcome to the Weather single page application!</p>
+<div>
+    <h2>Set your location:</h2>
+    <form>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" name="location" id="location" placeholder="e.g. New York"
+                [formControl]="location">
+            <br>
+            <button type="submit" (click)="setLocation.emit(location.value)" class="btn btn-primary" style="float: right;">Submit</button>
+        </div>
+    </form>
+</div>
